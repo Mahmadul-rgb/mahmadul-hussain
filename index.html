@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Mahmadul Hussain - Web Developer & Digital Product Builder.">
+    <title>Mahmadul Hussain | Web Developer & Product Builder</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            /* Palette */
+            --bg-color: #fafafa;
+            --surface-color: #ffffff;
+            --text-primary: #111111;
+            --text-secondary: #555555;
+            --accent-color: #3b5bdb; /* Muted Indigo */
+            --accent-hover: #2f48ad;
+            --border-color: #e5e5e5;
+            
+            /* Spacing */
+            --container-width: 1100px;
+            --spacing-section: 120px;
+            --spacing-element: 24px;
+            
+            /* Typography */
+            --font-main: 'Inter', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: var(--spacing-section) 0;
+            border-bottom: 1px solid transparent; /* Placeholder for rhythm */
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-speed) ease;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            background-color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 0; /* Override default section padding */
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-top: 24px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            position: relative;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1.1;
+            object-fit: cover;
+            border-radius: 8px;
+            /* Minimal styling, no heavy shadows */
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .hero-image img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-content {
+            max-width: 700px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 32px;
+            transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+        }
+
+        .skill-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 12px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 15px; /* Alignment with header text */
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-wrapper {
+            max-width: 600px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            width: 100px;
+            color: var(--text-primary);
+        }
+
+        .contact-value {
+            color: var(--text-secondary);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .contact-value:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: left;
+            }
+
+            .hero-image {
+                justify-content: flex-start;
+                order: -1; /* Image on top for mobile/tablet if desired, or keep structure */
+            }
+            
+            /* Keeping image on right/bottom for tablet, or stacking */
+            .hero-image {
+                 order: 1; /* Move image below text on mobile */
+                 justify-content: flex-start;
+                 margin-top: 20px;
+            }
+
+            h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing-section: 80px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image img {
+                max-width: 100%;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-content">
+                        <span class="subtitle">Web Developer & Digital Product Builder</span>
+                        <h1>Mahmadul Hussain</h1>
+                        <p class="tagline">Building structured, performance-focused digital products.</p>
+                        
+                        <div class="btn-group">
+                            <a href="#projects" class="btn btn-primary">View Work</a>
+                            <a href="#contact" class="btn btn-secondary">Contact</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <!-- URL Cleaned up based on prompt -->
+                        <img src="https://instasize.com/p/16c45a365266ecbe313d799e09f36e8205ff0c911c46e5dfe347a8367d3ef529" alt="Mahmadul Hussain Profile" onerror="this.src='https://placehold.co/400x440/e5e5e5/111?text=MH'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="container">
+                <h2>About</h2>
+                <div class="about-content">
+                    <p>
+                        With a BSc in Computer Science, I approach web development through the lens of performance, clarity, and structured design. My philosophy is rooted in building tools and platforms that prioritize user utility and architectural cleanliness.
+                    </p>
+                    <p>
+                        I am currently focused on developing scalable digital products and exploring the intersection of audience psychology and engagement systems. Whether building image optimization engines or digital explainer platforms, I strive for minimal design that serves a clear function.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <div class="container">
+                <h2>Selected Work</h2>
+                <div class="projects-grid">
+                    
+                    <!-- Project 1 -->
+                    <article class="project-card">
+                        <span class="project-category">Image Optimization Platform</span>
+                        <h3 class="project-title">Pixora</h3>
+                        <p class="project-description">
+                            A performance-focused web platform for image compression and conversion. Designed with minimal UI, speed-first architecture, and usability clarity to streamline digital asset management.
+                        </p>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card">
+                        <span class="project-category">Tech & Digital Explainer</span>
+                        <h3 class="project-title">The Brief</h3>
+                        <p class="project-description">
+                            A structured publication focused on clear storytelling around AI, internet culture, and digital life. Built with strong information hierarchy and modern layout principles to enhance readability.
+                        </p>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card">
+                        <span class="project-category">Web Utility Suite</span>
+                        <h3 class="project-title">SEO Tools Platform</h3>
+                        <p class="project-description">
+                            A web-based SEO toolkit designed to help users analyze and optimize digital content efficiently. Developed with an emphasis on speed, data visualization, and structured usability.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <div class="container">
+                <h2>Expertise</h2>
+                <div class="skills-container">
+                    
+                    <div class="skill-column">
+                        <h3>Frontend Development</h3>
+                        <ul class="skill-list">
+                            <li>HTML5 Semantic Markup</li>
+                            <li>CSS3 & Modern Layouts</li>
+                            <li>Vanilla JavaScript</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-column">
+                        <h3>Web Strategy</h3>
+                        <ul class="skill-list">
+                            <li>SEO Fundamentals</li>
+                            <li>Performance Optimization</li>
+                            <li>Responsive Architecture</li>
+                            <li>Information Hierarchy</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-column">
+                        <h3>Digital Growth</h3>
+                        <ul class="skill-list">
+                            <li>Audience Psychology</li>
+                            <li>Content Strategy</li>
+                            <li>Engagement Systems</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:hello@mahmadulhussain.com" class="contact-value">hello@mahmadulhussain.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GitHub</span>
+                        <a href="#" class="contact-value">github.com/mahmadulhussain</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">LinkedIn</span>
+                        <a href="#" class="contact-value">linkedin.com/in/mahmadulhussain</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Mahmadul Hussain. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Minimal JS for scroll offset correction if needed, keeping it ultra-light -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // Slight offset for breathing room
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
