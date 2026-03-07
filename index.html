@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mahmadul Hussain - Senior Frontend Architect & Product Builder">
+    <meta name="description" content="Mahmadul Hussain - Senior Frontend Architect, UI/UX Engineer & Web Performance Specialist. View my portfolio and projects.">
+    <meta name="keywords" content="Frontend Developer, UI/UX Engineer, Web Performance, React, Next.js, Mahmadul Hussain">
+    <meta name="author" content="Mahmadul Hussain">
+    
+    <meta property="og:title" content="Mahmadul Hussain | Senior Frontend Architect">
+    <meta property="og:description" content="Portfolio of Mahmadul Hussain, specializing in highly performant engineering and world-class design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mahmadul.dev/">
+    <meta property="og:image" content="https://mahmadul.dev/og-image.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mahmadul Hussain | Senior Frontend Architect">
+    <meta name="twitter:description" content="Portfolio of Mahmadul Hussain, bridging the gap between design and performant engineering.">
+    <meta name="twitter:image" content="https://mahmadul.dev/og-image.jpg">
+
+    <link rel="canonical" href="https://mahmadul.dev/">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>M</text></svg>">
+    
     <title>Mahmadul Hussain | Web Developer</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,23 +35,24 @@
         :root {
             /* Light Theme (Default) */
             --bg-base: #ffffff;
-            --bg-surface: rgba(255, 255, 255, 0.7);
-            --bg-card: #ffffff;
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --bg-card: #fafafa;
             --text-main: #0a0a0a;
-            --text-muted: #666666;
-            --text-faint: #999999;
+            --text-muted: #555555;
+            --text-faint: #888888;
             --border-subtle: rgba(0, 0, 0, 0.08);
             --border-hover: rgba(0, 0, 0, 0.2);
             --accent: #000000;
             --accent-glow: rgba(0, 0, 0, 0.04);
             --grid-color: rgba(0, 0, 0, 0.05);
+            --focus-ring: rgba(0, 0, 0, 0.4);
             
             /* Typography */
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             
             /* Spacing & Layout */
             --max-w: 1100px;
-            --section-gap: clamp(6rem, 12vmax, 12rem);
+            --section-gap: clamp(5rem, 10vmax, 10rem);
             
             /* Motion */
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -42,23 +61,23 @@
 
         @media (prefers-color-scheme: dark) {
             :root {
-                /* Dark Theme (Vercel/Linear style) */
                 --bg-base: #050505;
-                --bg-surface: rgba(10, 10, 10, 0.7);
-                --bg-card: #0a0a0a;
+                --bg-surface: rgba(10, 10, 10, 0.85);
+                --bg-card: #0d0d0d;
                 --text-main: #ffffff;
                 --text-muted: #a1a1aa;
-                --text-faint: #52525b;
-                --border-subtle: rgba(255, 255, 255, 0.08);
-                --border-hover: rgba(255, 255, 255, 0.2);
+                --text-faint: #666666;
+                --border-subtle: rgba(255, 255, 255, 0.1);
+                --border-hover: rgba(255, 255, 255, 0.25);
                 --accent: #ffffff;
                 --accent-glow: rgba(255, 255, 255, 0.04);
                 --grid-color: rgba(255, 255, 255, 0.05);
+                --focus-ring: rgba(255, 255, 255, 0.6);
             }
         }
 
         /* ==========================================================================
-           2. RESET & GLOBAL BASE
+           2. RESET, ACCESSIBILITY & GLOBAL BASE
            ========================================================================== */
         *, *::before, *::after {
             margin: 0; padding: 0; box-sizing: border-box;
@@ -78,6 +97,24 @@
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             position: relative;
+        }
+
+        /* Focus States for Keyboard Navigation */
+        :focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* Prefers Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Subtle Dot Grid Texture */
@@ -100,6 +137,7 @@
 
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
+        button { background: none; border: none; cursor: pointer; color: inherit; font: inherit; }
 
         /* ==========================================================================
            3. TYPOGRAPHY
@@ -111,14 +149,14 @@
         }
 
         .text-fluid-hero {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
             letter-spacing: -0.05em;
         }
 
         .text-fluid-h2 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             letter-spacing: -0.04em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .text-body-large {
@@ -151,6 +189,11 @@
 
         .section-spacer { padding: var(--section-gap) 0; }
 
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+
         /* ==========================================================================
            5. NAVIGATION
            ========================================================================== */
@@ -165,8 +208,8 @@
         .nav-wrapper.scrolled {
             padding: 0.75rem 0;
             background: var(--bg-surface);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
         }
 
@@ -177,15 +220,23 @@
         }
 
         .logo {
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             letter-spacing: -0.02em;
+            z-index: 101;
+            position: relative;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .nav-links {
             display: flex;
             gap: 2.5rem;
-            background: rgba(100, 100, 100, 0.05);
+            background: rgba(128, 128, 128, 0.05);
             padding: 0.5rem 1.5rem;
             border-radius: 100px;
             border: 1px solid var(--border-subtle);
@@ -202,6 +253,43 @@
 
         .nav-links a:hover { color: var(--text-main); }
 
+        .resume-btn {
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--text-main);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+        
+        .resume-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-base);
+        }
+
+        /* Hamburger Menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2rem;
+            height: 2rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .mobile-toggle span {
+            width: 2rem;
+            height: 0.15rem;
+            background: var(--text-main);
+            border-radius: 10px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
         /* ==========================================================================
            6. BUTTONS & MICRO-INTERACTIONS
            ========================================================================== */
@@ -213,30 +301,25 @@
             padding: 0 2rem;
             border-radius: 100px;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease, background 0.3s, border 0.3s;
             position: relative;
             overflow: hidden;
             will-change: transform;
+            gap: 0.5rem;
         }
 
         .btn-primary {
             background: var(--text-main);
             color: var(--bg-base);
-            border: none;
+            border: 1px solid var(--text-main);
         }
 
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
-
-        .btn-primary:hover::after { opacity: 1; }
 
         .btn-secondary {
             background: transparent;
@@ -247,13 +330,13 @@
         .btn-secondary:hover {
             background: var(--bg-surface);
             border-color: var(--border-hover);
+            transform: translateY(-2px);
         }
 
-        /* Magnetic button wrapper */
         .magnetic-wrap {
             display: inline-block;
             padding: 1rem;
-            margin: -1rem; /* Offset padding */
+            margin: -1rem;
         }
 
         /* ==========================================================================
@@ -263,8 +346,15 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 5rem; /* Account for nav */
+            padding-top: 5rem;
             position: relative;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: center;
         }
 
         .hero-content {
@@ -277,16 +367,40 @@
         }
 
         .hero .text-body-large {
-            margin-top: 2rem;
-            margin-bottom: 3.5rem;
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            max-width: 700px;
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            max-width: 650px;
         }
 
         .hero-actions {
             display: flex;
             gap: 1.5rem;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-photo-wrapper {
+            position: relative;
+            width: clamp(200px, 25vw, 320px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--border-subtle);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .hero-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .hero-photo-wrapper:hover .hero-photo {
+            filter: grayscale(0%);
+            transform: scale(1.05);
         }
 
         /* ==========================================================================
@@ -295,21 +409,20 @@
         .work-grid {
             display: flex;
             flex-direction: column;
-            gap: 4rem;
+            gap: 6rem;
         }
 
         .project-card {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 4rem;
             align-items: center;
-            group;
         }
 
-        /* Alternate card layouts */
         .project-card:nth-child(even) {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
         }
+        
         .project-card:nth-child(even) .project-content {
             order: -1;
         }
@@ -317,7 +430,7 @@
         .project-visual {
             position: relative;
             width: 100%;
-            aspect-ratio: 4/3;
+            aspect-ratio: 16/10;
             background: var(--bg-card);
             border-radius: 16px;
             border: 1px solid var(--border-subtle);
@@ -326,7 +439,6 @@
             transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo), border-color 0.4s ease;
         }
 
-        /* Inner glassmorphism glow */
         .project-visual::after {
             content: '';
             position: absolute;
@@ -338,63 +450,94 @@
         }
 
         .project-card:hover .project-visual {
-            transform: scale(0.98);
+            transform: translateY(-8px);
             border-color: var(--border-hover);
-            box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+            box-shadow: 0 32px 64px rgba(0,0,0,0.08);
         }
 
-        .visual-placeholder {
+        .project-image {
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-glow);
-            font-size: 0.85rem;
-            color: var(--text-faint);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: transform 0.8s var(--ease-out-expo), background 0.4s ease;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out-expo);
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.03);
         }
 
-        .project-card:hover .visual-placeholder {
-            transform: scale(1.05);
-            background: transparent;
+        /* Badges & Tech Stack */
+        .badge-wip {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255, 165, 0, 0.1);
+            color: #d97706;
+            border: 1px solid rgba(255, 165, 0, 0.2);
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 100px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .project-title {
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
             margin-bottom: 1rem;
         }
 
         .project-desc {
             font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
         }
 
         .project-link {
             display: inline-flex;
             align-items: center;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-main);
             border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 4px;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, color 0.3s ease;
+            gap: 0.5rem;
+        }
+
+        .project-link svg {
+            width: 18px; height: 18px;
+            transition: transform 0.3s var(--ease-out-expo);
         }
 
         .project-link:hover {
             border-color: var(--text-main);
         }
 
-        .project-link span {
-            margin-left: 8px;
-            transition: transform 0.3s var(--ease-out-expo);
-        }
-
-        .project-link:hover span {
+        .project-link.external:hover svg {
             transform: translateX(4px) translateY(-4px);
         }
 
@@ -422,7 +565,7 @@
 
         .expertise-label {
             font-size: 1.2rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-main);
         }
 
@@ -433,7 +576,7 @@
         }
 
         /* ==========================================================================
-           10. CONTACT (MASSIVE FOOTER)
+           10. CONTACT & FOOTER
            ========================================================================== */
         .contact-section {
             padding: 8rem 0 4rem;
@@ -441,22 +584,22 @@
         }
 
         .contact-cta {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 600;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
             letter-spacing: -0.05em;
             color: var(--text-main);
             display: inline-block;
             margin-bottom: 4rem;
             position: relative;
             line-height: 1;
+            padding-bottom: 0.5rem;
         }
 
-        /* Animated underline effect */
         .contact-cta::after {
             content: '';
             position: absolute;
             bottom: 0; left: 0;
-            width: 100%; height: 4px;
+            width: 100%; height: 6px;
             background: var(--text-main);
             transform: scaleX(0);
             transform-origin: right;
@@ -475,7 +618,7 @@
             border-top: 1px solid var(--border-subtle);
             padding-top: 2rem;
             color: var(--text-faint);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .social-links {
@@ -483,12 +626,17 @@
             gap: 1.5rem;
         }
         
+        .social-links a {
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
         .social-links a:hover {
             color: var(--text-main);
         }
 
         /* ==========================================================================
-           11. ANIMATION CLASSES (JS Triggered)
+           11. ANIMATION CLASSES
            ========================================================================== */
         .reveal-up {
             opacity: 0;
@@ -502,7 +650,6 @@
             transform: translate3d(0, 0, 0);
         }
 
-        /* Stagger delays for sibling elements */
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
@@ -511,159 +658,280 @@
            12. RESPONSIVE DESIGN
            ========================================================================== */
         @media (max-width: 900px) {
-            .project-card, .project-card:nth-child(even) {
+            .hero-inner {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                text-align: left;
             }
+            
+            .hero-photo-wrapper {
+                width: 180px;
+                order: -1;
+            }
+            
+            .project-card, .project-card:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
             .project-card:nth-child(even) .project-content {
-                order: 1; /* Reset order on mobile */
+                order: 1; 
             }
+            
             .expertise-item {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 0.5rem;
                 padding: 2rem 0;
             }
+            
             .expertise-item:hover {
                 padding-left: 0; padding-right: 0;
             }
-            .nav-links {
-                display: none; /* In a real app, add a hamburger menu here */
-            }
+            
             .footer-bottom {
+                flex-direction: column-reverse;
+                gap: 1.5rem;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 100%; height: 100vh;
+                background: var(--bg-base);
                 flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s var(--ease-out-expo);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                background: transparent;
+                border: none;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            /* Hamburger Animation */
+            .mobile-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .mobile-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav class="nav-wrapper" id="navbar">
+    <nav class="nav-wrapper" id="navbar" aria-label="Main Navigation">
         <div class="container nav-inner">
-            <a href="#" class="logo">Mahmadul.</a>
-            <div class="nav-links">
-                <a href="#work">Work</a>
-                <a href="#expertise">Expertise</a>
-                <a href="#contact">Contact</a>
+            <a href="#" class="logo" aria-label="Mahmadul Hussain Home">Mahmadul.</a>
+            
+            <button class="mobile-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="primary-navigation">
+                <div class="nav-links">
+                    <a href="#work">Work</a>
+                    <a href="#expertise">Expertise</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <a href="/resume.pdf" class="resume-btn" download aria-label="Download Resume">Resume</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="label-eyebrow reveal-up">Frontend Architect & Designer</span>
-                <h1 class="text-fluid-hero reveal-up delay-1">Crafting digital <br>products with precision <br>and logic.</h1>
-                <p class="text-body-large reveal-up delay-2">
-                    I bridge the gap between world-class design and highly performant engineering, building platforms that scale and feel effortless.
-                </p>
-                <div class="hero-actions reveal-up delay-3">
-                    <div class="magnetic-wrap">
-                        <a href="#work" class="btn btn-primary magnetic-element">View Selected Work</a>
+    <main>
+        <header class="hero">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-content">
+                        <span class="label-eyebrow reveal-up">Frontend Architect & Designer</span>
+                        <h1 class="text-fluid-hero reveal-up delay-1">Crafting digital <br>products with precision <br>and logic.</h1>
+                        <p class="text-body-large reveal-up delay-2">
+                            I bridge the gap between world-class design and highly performant engineering, building platforms that scale and feel effortless.
+                        </p>
+                        <div class="hero-actions reveal-up delay-3">
+                            <div class="magnetic-wrap">
+                                <a href="#work" class="btn btn-primary magnetic-element">View Selected Work</a>
+                            </div>
+                            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                        </div>
                     </div>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    <div class="hero-photo-wrapper reveal-up delay-2">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mahmadul Hussain - Profile Photo" class="hero-photo" loading="eager" width="320" height="320">
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- WORK / CASE STUDIES -->
-    <section id="work" class="section-spacer">
-        <div class="container">
-            <h2 class="text-fluid-h2 reveal-up">Selected Projects</h2>
-            
-            <div class="work-grid">
+        <section id="work" class="section-spacer" aria-labelledby="work-heading">
+            <div class="container">
+                <h2 id="work-heading" class="text-fluid-h2 reveal-up">Selected Projects</h2>
                 
-                <!-- Project 1 -->
-                <article class="project-card reveal-up delay-1">
-                    <div class="project-visual">
-                        <div class="visual-placeholder">Pixora / Image Optimization Platform</div>
-                    </div>
-                    <div class="project-content">
-                        <span class="label-eyebrow">SaaS / Web App</span>
-                        <h3 class="project-title">Pixora</h3>
-                        <p class="project-desc">A highly technical image optimization platform focusing on rapid compression algorithms and a zero-latency developer experience. Built with Next.js and Rust WASM.</p>
-                        <a href="#" class="project-link">Read Case Study <span>↗</span></a>
-                    </div>
-                </article>
+                <div class="work-grid">
+                    
+                    <article class="project-card reveal-up delay-1">
+                        <div class="project-visual">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Screenshot of Pixora image optimization platform" class="project-image" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <span class="badge-wip" aria-label="Status: Work in Progress">Work in Progress</span>
+                            <h3 class="project-title">Pixora</h3>
+                            <p class="project-desc">A highly technical image optimization platform focusing on rapid compression algorithms and a zero-latency developer experience. Built for scale and speed.</p>
+                            
+                            <ul class="tech-stack" aria-label="Technologies used">
+                                <li class="tech-tag">Next.js</li>
+                                <li class="tech-tag">Rust (WASM)</li>
+                                <li class="tech-tag">TypeScript</li>
+                                <li class="tech-tag">TailwindCSS</li>
+                            </ul>
 
-                <!-- Project 2 -->
-                <article class="project-card reveal-up delay-1">
-                    <div class="project-visual">
-                        <div class="visual-placeholder">The Brief / Editorial Layout</div>
-                    </div>
-                    <div class="project-content">
-                        <span class="label-eyebrow">Editorial / Platform</span>
-                        <h3 class="project-title">The Brief</h3>
-                        <p class="project-desc">A structured tech explainer platform featuring a rigorous typographic hierarchy, dark-mode native design, and seamless fluid transitions.</p>
-                        <a href="#" class="project-link">Read Case Study <span>↗</span></a>
-                    </div>
-                </article>
+                            <div class="project-actions">
+                                <a href="#" class="project-link external" target="_blank" rel="noopener noreferrer">
+                                    Live Demo
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                </a>
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </article>
 
-                <!-- Project 3 -->
-                <article class="project-card reveal-up delay-1">
-                    <div class="project-visual">
-                        <div class="visual-placeholder">SEO Optimizer / Utility Suite</div>
-                    </div>
-                    <div class="project-content">
-                        <span class="label-eyebrow">Productivity / Tooling</span>
-                        <h3 class="project-title">SEO Optimizer</h3>
-                        <p class="project-desc">Performance-focused web utilities suite designed for digital marketers. Features real-time analytics tracking and an impossibly clean UI.</p>
-                        <a href="#" class="project-link">Read Case Study <span>↗</span></a>
-                    </div>
-                </article>
+                    <article class="project-card reveal-up delay-1">
+                        <div class="project-visual">
+                            <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Screenshot of The Brief editorial layout" class="project-image" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <span class="label-eyebrow">Editorial / Platform</span>
+                            <h3 class="project-title">The Brief</h3>
+                            <p class="project-desc">A structured tech explainer platform featuring a rigorous typographic hierarchy, dark-mode native design, and seamless fluid transitions mapped to user scroll behavior.</p>
+                            
+                            <ul class="tech-stack" aria-label="Technologies used">
+                                <li class="tech-tag">React</li>
+                                <li class="tech-tag">Framer Motion</li>
+                                <li class="tech-tag">Sanity CMS</li>
+                            </ul>
 
+                            <div class="project-actions">
+                                <a href="#" class="project-link external" target="_blank" rel="noopener noreferrer">
+                                    Live Demo
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                </a>
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal-up delay-1">
+                        <div class="project-visual">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Screenshot of SEO Optimizer dashboard" class="project-image" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <span class="label-eyebrow">Productivity / Tooling</span>
+                            <h3 class="project-title">SEO Optimizer</h3>
+                            <p class="project-desc">Performance-focused web utilities suite designed for digital marketers. Features real-time analytics tracking, Core Web Vitals monitoring, and an impossibly clean UI.</p>
+                            
+                            <ul class="tech-stack" aria-label="Technologies used">
+                                <li class="tech-tag">Vue 3</li>
+                                <li class="tech-tag">Node.js</li>
+                                <li class="tech-tag">PostgreSQL</li>
+                                <li class="tech-tag">Redis</li>
+                            </ul>
+
+                            <div class="project-actions">
+                                <a href="#" class="project-link external" target="_blank" rel="noopener noreferrer">
+                                    Live Demo
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                                </a>
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- EXPERTISE -->
-    <section id="expertise" class="section-spacer" style="background: rgba(100,100,100,0.02);">
-        <div class="container">
-            <h2 class="text-fluid-h2 reveal-up">Technical Capability</h2>
-            
-            <div class="expertise-list">
-                <div class="expertise-item reveal-up delay-1">
-                    <div class="expertise-label">Engineering</div>
-                    <div class="expertise-details">Semantic Architecture, React.js ecosystem (Next.js), TypeScript strictly typed environments, State Management, Server-Side Rendering (SSR).</div>
-                </div>
+        <section id="expertise" class="section-spacer" style="background: rgba(128,128,128,0.02);" aria-labelledby="expertise-heading">
+            <div class="container">
+                <h2 id="expertise-heading" class="text-fluid-h2 reveal-up">Technical Capability</h2>
+                
+                <div class="expertise-list">
+                    <div class="expertise-item reveal-up delay-1">
+                        <div class="expertise-label">Engineering</div>
+                        <div class="expertise-details">Semantic Architecture, React.js ecosystem (Next.js), TypeScript strictly typed environments, State Management, Server-Side Rendering (SSR).</div>
+                    </div>
 
-                <div class="expertise-item reveal-up delay-2">
-                    <div class="expertise-label">Interface Design</div>
-                    <div class="expertise-details">Systematic UI/UX, Typography-driven layout, Figma Design Systems, Advanced CSS Architecture (Variables, Grid, Subgrid).</div>
-                </div>
+                    <div class="expertise-item reveal-up delay-2">
+                        <div class="expertise-label">Interface Design</div>
+                        <div class="expertise-details">Systematic UI/UX, Typography-driven layout, Figma Design Systems, Advanced CSS Architecture (Variables, Grid, Subgrid), Accessibility (WCAG).</div>
+                    </div>
 
-                <div class="expertise-item reveal-up delay-3">
-                    <div class="expertise-label">Motion & Polish</div>
-                    <div class="expertise-details">Framer Motion, Vanilla JS Intersection Observers, High-performance CSS transforms, Micro-interactions mapped to human pacing.</div>
+                    <div class="expertise-item reveal-up delay-3">
+                        <div class="expertise-label">Motion & Polish</div>
+                        <div class="expertise-details">Framer Motion, Vanilla JS Intersection Observers, High-performance CSS transforms mapped to GPU, Micro-interactions pacing.</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <span class="label-eyebrow reveal-up">Available for opportunities</span>
-            <div class="reveal-up delay-1">
-                <a href="mailto:hello@mahmadul.dev" class="contact-cta">Let's build.</a>
-            </div>
-            
-            <footer class="footer-bottom reveal-up delay-2">
-                <div>&copy; 2024 Mahmadul Hussain. All rights reserved.</div>
-                <div class="social-links">
-                    <a href="#">GitHub</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Twitter/X</a>
+        <footer id="contact" class="contact-section">
+            <div class="container">
+                <span class="label-eyebrow reveal-up">Available for opportunities</span>
+                <div class="reveal-up delay-1">
+                    <a href="mailto:hello@mahmadul.dev" class="contact-cta" aria-label="Send an email to Mahmadul">Let's build.</a>
                 </div>
-            </footer>
-        </div>
-    </section>
+                
+                <div class="footer-bottom reveal-up delay-2">
+                    <div>&copy; 2024 Mahmadul Hussain. All rights reserved.</div>
+                    <ul class="social-links" aria-label="Social media links">
+                        <li><a href="https://github.com/mahmadul" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/mahmadul" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/mahmadul" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </main>
 
-    <!-- LOGIC & INTERACTIONS -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
@@ -677,52 +945,94 @@
                 }
             }, { passive: true });
 
-            /* 2. Scroll Reveal Animation (Intersection Observer) */
-            const revealElements = document.querySelectorAll('.reveal-up');
+            /* 2. Mobile Menu Toggle */
+            const mobileBtn = document.querySelector('.mobile-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-links a, .resume-btn');
             
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
+            const toggleMenu = () => {
+                const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+                mobileBtn.setAttribute('aria-expanded', !isExpanded);
+                mobileBtn.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
             };
 
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Run once
-                });
-            }, revealOptions);
+            mobileBtn.addEventListener('click', toggleMenu);
 
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            /* 3. Magnetic Button Effect (Premium Micro-interaction) */
-            const magneticWraps = document.querySelectorAll('.magnetic-wrap');
-            
-            magneticWraps.forEach(wrap => {
-                const element = wrap.querySelector('.magnetic-element');
-                
-                wrap.addEventListener('mousemove', (e) => {
-                    const rect = wrap.getBoundingClientRect();
-                    const h = rect.width / 2;
-                    const v = rect.height / 2;
-                    
-                    // Calculate distance from center
-                    const x = e.clientX - rect.left - h;
-                    const y = e.clientY - rect.top - v;
-                    
-                    // Move the button slightly towards the cursor
-                    element.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                });
-                
-                wrap.addEventListener('mouseleave', () => {
-                    // Snap back with CSS transition
-                    element.style.transform = `translate(0px, 0px)`;
+            /* Close menu on link click */
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) toggleMenu();
                 });
             });
 
+            /* Close menu on Escape key */
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    toggleMenu();
+                    mobileBtn.focus();
+                }
+            });
+
+            /* 3. Scroll Reveal Animation (Intersection Observer) */
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const revealElements = document.querySelectorAll('.reveal-up');
+            
+            if (prefersReducedMotion) {
+                // If user prefers reduced motion, show immediately
+                revealElements.forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                    el.classList.add('is-visible');
+                });
+            } else {
+                const revealOptions = {
+                    threshold: 0.15,
+                    rootMargin: "0px 0px -50px 0px"
+                };
+
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    });
+                }, revealOptions);
+
+                revealElements.forEach(el => revealObserver.observe(el));
+            }
+
+            /* 4. Magnetic Button Effect (Optimized) */
+            if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+                const magneticWraps = document.querySelectorAll('.magnetic-wrap');
+                let requestRef;
+                
+                magneticWraps.forEach(wrap => {
+                    const element = wrap.querySelector('.magnetic-element');
+                    
+                    wrap.addEventListener('mousemove', (e) => {
+                        cancelAnimationFrame(requestRef);
+                        requestRef = requestAnimationFrame(() => {
+                            const rect = wrap.getBoundingClientRect();
+                            const h = rect.width / 2;
+                            const v = rect.height / 2;
+                            const x = e.clientX - rect.left - h;
+                            const y = e.clientY - rect.top - v;
+                            element.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                        });
+                    });
+                    
+                    wrap.addEventListener('mouseleave', () => {
+                        cancelAnimationFrame(requestRef);
+                        element.style.transform = `translate(0px, 0px)`;
+                    });
+                });
+            }
+
         });
     </script>
-
 </body>
 </html>
 
